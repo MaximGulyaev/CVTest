@@ -15,7 +15,7 @@ vector<int> ConvertBytesToIntVector(vector<unsigned char> bytes, long long int s
 	long long int sizeNumb = sizeFile / 4;
 
 	vector<int> result(sizeNumb);
-	for (int i = 0, int j = 0 ; i < sizeNumb; i += 4,++j){
+	for (int i = 0, j = 0; i < sizeNumb; i += 4, ++j){
 		X x;
 		x.bytes[0] = bytes[i];
 		x.bytes[1] = bytes[i+1];
@@ -29,7 +29,7 @@ vector<int> ConvertBytesToIntVector(vector<unsigned char> bytes, long long int s
 vector<int> Rotate(const vector<int>& image, double angle){
 	double PI = std::atan(1.0) * 4;
 	angle = 180 * angle / PI;
-	long long int N = sqrt(image.size);
+	long long int N = sqrt(image.size());
 
 	vector<int> resultImage(image.size());
 
@@ -38,7 +38,7 @@ vector<int> Rotate(const vector<int>& image, double angle){
 			int nX = cos(angle)*xj - sin(angle)*yi;
 			int nY = sin(angle)*xj + cos(angle)*yi;
 
-			resultImage[nY * N + nX] = image[yi * N + jx];
+			resultImage[nY * N + nX] = image[yi * N + xj];
 		}
 	}
 	return resultImage;
@@ -56,7 +56,6 @@ vector<unsigned char> ConvertIntToBytesVector(vector<int> img){
 		result[i] = x.bytes[1];
 		result[i] = x.bytes[2];
 		result[i] = x.bytes[3];
-		result[j] = x.number;
 	}
 	return result;
 }
